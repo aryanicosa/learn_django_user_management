@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -125,6 +126,12 @@ STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL = "dashboard"
 
-EMAIL_HOST = "localhost"
+EMAIL_HOST = "smtp.mailgun.org"
 
-EMAIL_PORT = 1025
+EMAIL_PORT = 587
+
+EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
+
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
+
+EMAIL_USE_TLS = True
